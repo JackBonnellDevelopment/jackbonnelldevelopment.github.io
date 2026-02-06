@@ -20,7 +20,7 @@
     pre = ""
     # you can add extra information after the name (HTML format is supported), such as icons
     post = ""
-    name = "Posts"
+    name = "Blog"
     url = "/posts/"
     # title will be shown when you hover on this menu link
     title = ""
@@ -163,10 +163,10 @@
       paginate = 6
   # Social config in home page
   [params.social]
-    GitHub = "xxx"
-    Linkedin = "xxx"
-    Instagram = "xxxs"
-    Email = "xxx"
+    GitHub = "https://github.com/JackBonnellDevelopment"
+    Linkedin = "https://www.linkedin.com/in/jackbonnell"
+    Instagram = "https://www.instagram.com/jackbonnelldev"
+    Email = "me@jackbonnell.dev"
 
   # Page global config
   [params.page]
@@ -425,3 +425,11 @@
     polyfill = false
     # whether to use object-fit-images to be compatible with older browsers
     objectFit = false
+
+# Markup related config in Hugo
+[markup]
+  # Goldmark is from Hugo 0.60 the default library used for Markdown
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # whether to use HTML tags directly in the document
+      unsafe = true

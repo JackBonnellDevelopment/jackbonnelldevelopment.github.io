@@ -1,0 +1,37 @@
+{{- define "title" }}
+    {{- .Params.Title | default "Blog" -}} - {{ .Site.Title -}}
+{{- end -}}
+
+{{- define "content" -}}
+    <div class="page blog">
+        {{- /* Title */ -}}
+        <h1 class="single-title animate__animated animate__pulse animate__faster">
+            {{- .Params.Title | default "Blog" | default .Section -}}
+        </h1>
+
+        {{- /* Paginate */ -}}
+        {{- if .Pages -}}
+            {{- $pages := .Pages -}}
+            {{- if .Site.Params.page.hiddenFromHomePage -}}
+                {{- $pages = where $pages "Params.hiddenfromhomepage" false -}}
+            {{- else -}}
+                {{- $pages = where $pages "Params.hiddenfromhomepage" "!=" true -}}
+            {{- end -}}
+            {{- with .Site.Params.section.paginate | default .Site.Params.paginate -}}
+                {{- $pages = $.Paginate $pages . -}}
+            {{- else -}}
+                {{- $pages = .Paginate $pages -}}
+            {{- end -}}
+            <ul class="blog-posts-list">
+                {{- range $pages.Pages -}}
+                    {{- .Render "summary" -}}
+                {{- end -}}
+            </ul>
+            {{- partial "paginator.html" . -}}
+        {{- else -}}
+            <div class="empty-state">
+                <p>{{ T "noPosts" | default "No posts yet. Check back soon!" }}</p>
+            </div>
+        {{- end -}}
+    </div>
+{{- end -}}

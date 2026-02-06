@@ -1,0 +1,10 @@
+{{- $params := .Params | merge .Site.Params.page -}}
+
+<li class="blog-post-item" itemscope itemtype="http://schema.org/Article">
+    {{- $dateFormat := "January 2, 2006" -}}
+    {{- $formattedDate := $dateFormat | .PublishDate.Format -}}
+    <span class="blog-post-date">
+        <time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ $formattedDate }}</time>
+    </span>
+    <a href="{{ .RelPermalink }}" class="blog-post-link" itemprop="name headline">{{ .Title }}</a>
+</li>

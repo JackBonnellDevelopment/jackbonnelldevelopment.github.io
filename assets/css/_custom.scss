@@ -16,3 +16,165 @@ header {
     box-shadow: none !important;
   }
 }
+
+// About page text card
+.about-card {
+  max-width: 40rem;
+  margin: 2rem auto 0;
+  padding: 1.75rem 2rem;
+  background-color: $global-background-color;
+  border-radius: 0.75rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  border: 1px solid $global-border-color;
+
+  [theme=dark] & {
+    background-color: $global-background-color-dark;
+    border-color: $global-border-color-dark;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+  }
+}
+
+// About page avatar (circular, similar to home avatar)
+.about-card .about-profile {
+  text-align: center;
+  padding: 0 0 .5rem;
+}
+
+.about-card .about-profile .about-avatar {
+  padding: .5rem;
+}
+
+.about-card .about-profile .about-avatar-inner {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  @include border-radius(100%);
+  overflow: hidden;
+  @include box-shadow(0 0 0 .3618em rgba(0, 0, 0, .05));
+  @include transition(all 0.4s ease);
+}
+
+.about-card .about-profile .about-avatar-inner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-card .about-profile .about-avatar-inner img:hover {
+  position: relative;
+  @include transform(translateY(-.75rem));
+}
+
+// Blog page styles - Hugo Coder format
+.page.blog {
+  .single-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 4.5rem 0 2rem;
+    text-align: left;
+    color: $global-font-color;
+
+    [theme=dark] & {
+      color: $global-font-color-dark;
+    }
+  }
+
+  .blog-posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .blog-post-item {
+      list-style: none;
+      margin: 0.75rem 0;
+      padding: 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+
+      &::before {
+        content: "*";
+        color: $global-font-secondary-color;
+        margin-right: 0.5rem;
+        font-weight: normal;
+
+        [theme=dark] & {
+          color: $global-font-secondary-color-dark;
+        }
+      }
+
+      .blog-post-date {
+        color: $global-font-secondary-color;
+        font-size: 0.9375rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+
+        [theme=dark] & {
+          color: $global-font-secondary-color-dark;
+        }
+
+        time {
+          font-weight: normal;
+        }
+      }
+
+      .blog-post-link {
+        color: $global-font-color;
+        text-decoration: none;
+        font-size: 1rem;
+        @include transition(color 0.2s ease);
+
+        [theme=dark] & {
+          color: $global-font-color-dark;
+        }
+
+        &:hover {
+          color: $global-link-hover-color;
+          text-decoration: underline;
+
+          [theme=dark] & {
+            color: $global-link-hover-color-dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Ensure all images are responsive and shrink with screen size
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.featured-image-preview {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
+
+// Responsive images in content areas
+.content img,
+.single img,
+.summary img,
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Ensure images in blog posts are responsive
+.page.blog {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
