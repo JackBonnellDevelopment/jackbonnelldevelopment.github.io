@@ -664,6 +664,47 @@ class Theme {
         if (this.config.cookieconsent) cookieconsent.initialise(this.config.cookieconsent);
     }
 
+    initNotificationBanner() {
+        const $banner = document.getElementById('notification-banner');
+        if (!$banner) return;
+
+        const notificationId = $banner.getAttribute('data-notification-id') || 'default';
+        const STORAGE_KEY = `notificationBannerDismissed:${notificationId}`;
+
+        // If user has dismissed previously, keep it hidden on all pages
+        try {
+            if (window.localStorage && localStorage.getItem(STORAGE_KEY) === 'true') {
+                $banner.classList.add('hidden');
+                document.documentElement.style.setProperty('--notification-banner-height', '0px');
+                return;
+            }
+        } catch (e) {
+            // fail silently if localStorage is not available
+        }
+
+        // Set CSS variable for header/content offset based on actual banner height
+        const updateBannerHeight = () => {
+            const height = $banner.classList.contains('hidden') ? 0 : ($banner.offsetHeight || 0);
+            document.documentElement.style.setProperty('--notification-banner-height', `${height}px`);
+        };
+
+        updateBannerHeight();
+        window.addEventListener('resize', updateBannerHeight);
+
+        const $close = document.getElementById('notification-banner-close');
+        if ($close) {
+            $close.addEventListener('click', () => {
+                $banner.classList.add('hidden');
+                document.documentElement.style.setProperty('--notification-banner-height', '0px');
+                try {
+                    window.localStorage && localStorage.setItem(STORAGE_KEY, 'true');
+                } catch (e) {
+                    // ignore storage errors
+                }
+            }, false);
+        }
+    }
+
     onScroll() {
         const $headers = [];
         if (document.body.getAttribute('data-header-desktop') === 'auto') $headers.push(document.getElementById('header-desktop'));
@@ -749,6 +790,7 @@ class Theme {
             this.initTypeit();
             this.initMapbox();
             this.initCookieconsent();
+            this.initNotificationBanner();
         } catch (err) {
             console.error(err);
         }

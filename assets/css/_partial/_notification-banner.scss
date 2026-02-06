@@ -89,6 +89,8 @@
 
 // Adjust header position when notification banner is visible
 .notification-banner:not(.hidden) ~ .wrapper {
+  margin-top: var(--notification-banner-height, 3rem);
+
   #header-desktop {
     top: var(--notification-banner-height, 3rem);
   }
