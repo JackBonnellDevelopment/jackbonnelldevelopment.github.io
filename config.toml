@@ -163,9 +163,9 @@
       paginate = 6
   # Social config in home page
   [params.social]
-    GitHub = "https://github.com/JackBonnellDevelopment"
-    Linkedin = "https://www.linkedin.com/in/jackbonnell"
-    Instagram = "https://www.instagram.com/jackbonnelldev"
+    GitHub = "JackBonnellDevelopment"
+    Linkedin = "jackbonnell"
+    Instagram = "jackbonnelldev"
     Email = "me@jackbonnell.dev"
 
   # Page global config
