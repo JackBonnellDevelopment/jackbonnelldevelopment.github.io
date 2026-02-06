@@ -1,0 +1,8 @@
+node_modules
+.git
+.github
+resources/_gen
+exampleSite/public
+.DS_Store
+*.log
+

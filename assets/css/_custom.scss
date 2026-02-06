@@ -1,0 +1,18 @@
+// ==============================
+// Custom style
+// 自定义样式
+// ==============================
+
+// Make navbar background match page background
+header {
+  background-color: $global-background-color !important;
+
+  [theme=dark] & {
+    background-color: $global-background-color-dark !important;
+  }
+
+  // Remove hover shadow
+  &:hover {
+    box-shadow: none !important;
+  }
+}

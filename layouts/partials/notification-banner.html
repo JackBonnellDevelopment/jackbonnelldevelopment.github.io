@@ -1,0 +1,26 @@
+{{- if .Site.Params.notification.enable -}}
+<div class="notification-banner" id="notification-banner">
+    <div class="notification-banner-content">
+        <span class="notification-banner-message">
+            {{- if .Site.Params.notification.message -}}
+                {{- .Site.Params.notification.message | safeHTML -}}
+            {{- end -}}
+            {{- if .Site.Params.notification.link -}}
+                <a href="{{ .Site.Params.notification.link }}" class="notification-banner-link"{{ if .Site.Params.notification.linkTarget }} target="{{ .Site.Params.notification.linkTarget }}"{{ end }}{{ if (urls.Parse .Site.Params.notification.link).Host }} rel="noopener noreferrer"{{ end }}>
+                    {{- if .Site.Params.notification.linkText -}}
+                        {{- .Site.Params.notification.linkText -}}
+                    {{- else -}}
+                        {{- .Site.Params.notification.link -}}
+                    {{- end -}}
+                </a>
+            {{- end -}}
+        </span>
+        {{- if .Site.Params.notification.dismissible -}}
+            <button class="notification-banner-close" id="notification-banner-close" aria-label="Close notification">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        {{- end -}}
+    </div>
+</div>
+{{- end -}}
+
