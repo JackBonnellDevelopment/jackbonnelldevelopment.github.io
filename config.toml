@@ -167,6 +167,7 @@
     Linkedin = "jackbonnell"
     Instagram = "jackbonnelldev"
     Email = "me@jackbonnell.dev"
+    RSS = true
 
   # Page global config
   [params.page]
@@ -400,13 +401,13 @@
     # whether to enable the notification banner
     enable = true
     # notification message (HTML format is supported)
-    message = "Why not look at my new post: "
+    message = "🎉 New blog post available: "
     # optional link URL
-    link = "testing my page new"
+    link = "/posts/new-beginnings/"
     # optional link text (if not provided, the link URL will be shown)
-    linkText = "Creating a new devcontainer new"
+    linkText = "New Beginnings"
     # link target ["_blank", "_self", "_parent", "_top"]
-    linkTarget = "_blank"
+    linkTarget = "_self"
     # whether the banner can be dismissed by users
     dismissible = true
 

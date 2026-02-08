@@ -33,7 +33,7 @@ share:
 
 Hey,
 
-It has been a while since I last posted on my personal blog so I thought I would start fresh with my blog to allow myself to share interests that are close to myself and I enjoy working on in my personal time.
+It has been a while since I last posted on my personal blog so I thought I would start fresh with my blog to allow myself to share interests that I enjoy working on in my personal time.
 
 <!--more-->
 
@@ -42,10 +42,10 @@ It has been a while since I last posted on my personal blog so I thought I would
 I am still working in software, I currently work on creating low latency reporting systems using the C programming language. I enjoy working on backend/low level projects in my spare time revolving around a multitude of different architectures. Some projects I enjoy working on are:
 
 - **FPGA development** (currently using Ultra96V2)
-- **Homelabs**
-- **Swift UI development**
+- **Homelabbing** (Currently running a self build 3D printed nas)
 - **AI on edge** (mostly around Apple Intelligence)
 - **PCB design**
 - **CAD Design**
+- **3D Printing**
 
 </div>
