@@ -1,5 +1,5 @@
 {
-	"name": "KeepIt Hugo Theme",
+	"name": "Website Environment",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": ".."
