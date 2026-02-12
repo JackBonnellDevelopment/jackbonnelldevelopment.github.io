@@ -410,6 +410,9 @@
     linkTarget = "_self"
     # whether the banner can be dismissed by users
     dismissible = true
+    # optional ISO-8601 datetime after which the banner should start showing (UTC recommended)
+    # e.g. "2026-02-12T17:30:00Z" will only show the banner after that instant
+    showAfter = "2026-02-12T17:30:00Z"
 
   # CDN config for third-party library files
   [params.cdn]

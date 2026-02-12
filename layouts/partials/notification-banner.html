@@ -1,6 +1,7 @@
 {{- if .Site.Params.notification.enable -}}
 <div class="notification-banner" id="notification-banner"
-     data-notification-id="{{ printf "%s|%s|%s" (.Site.Params.notification.message | default "") (.Site.Params.notification.link | default "") (.Site.Params.notification.linkText | default "") }}">
+     data-notification-id="{{ printf "%s|%s|%s|%s" (.Site.Params.notification.message | default "") (.Site.Params.notification.link | default "") (.Site.Params.notification.linkText | default "") (.Site.Params.notification.showAfter | default "") }}"
+     {{- with .Site.Params.notification.showAfter }} data-show-after="{{ . }}"{{ end }}>
     <div class="notification-banner-content">
         <span class="notification-banner-message">
             {{- if .Site.Params.notification.message -}}
