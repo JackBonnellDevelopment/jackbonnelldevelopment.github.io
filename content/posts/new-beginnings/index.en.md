@@ -1,8 +1,8 @@
 ---
 weight: 1
 title: "New Beginnings"
-date: 2025-01-27T00:00:00+00:00
-lastmod: 2025-01-27T00:00:00+00:00
+date: 2026-02-12T17:30:00+00:00
+lastmod: 2026-02-12T17:30:00+00:00
 draft: false
 author: "Jack Bonnell"
 authorLink: "https://jackbonnell.dev"
