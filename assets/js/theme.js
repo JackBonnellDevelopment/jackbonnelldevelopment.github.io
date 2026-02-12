@@ -793,21 +793,6 @@ class Theme {
     const notificationId = $banner.getAttribute('data-notification-id') || 'default';
     const STORAGE_KEY = `notificationBannerDismissed:${notificationId}`; // If user has dismissed previously, keep it hidden on all pages
 
-    // Optional scheduled start time for showing the banner
-    const showAfterStr = $banner.getAttribute('data-show-after');
-    if (showAfterStr) {
-      const showAfter = new Date(showAfterStr);
-      if (!isNaN(showAfter.getTime())) {
-        const now = new Date();
-        if (now < showAfter) {
-          // Before the scheduled time: keep the banner hidden and skip all other logic
-          $banner.classList.add('hidden');
-          document.documentElement.style.setProperty('--notification-banner-height', '0px');
-          return;
-        }
-      }
-    }
-
     try {
       if (window.localStorage && localStorage.getItem(STORAGE_KEY) === 'true') {
         $banner.classList.add('hidden');

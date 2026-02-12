@@ -13,7 +13,7 @@
                 <div class="footer-line">
                     {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo %v">Hugo</a>` hugo.Version -}}
                     {{- $theme := .Scratch.Get "version" | printf `<a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="noopener noreferrer" title="KeepIt %v"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> KeepIt</a>` -}}
-                    {{- dict "Hugo" $hugo "Theme" $theme | T "poweredBySome" | safeHTML }}
+                    {{- dict "Hugo" $hugo | T "poweredBySome" | safeHTML }}
                 </div>
             {{- end -}}
 
@@ -21,13 +21,9 @@
                 {{- /* Copyright year */ -}}
                 {{- if ne .Site.Params.footer.copyright false -}}
                     <i class="far fa-copyright fa-fw" aria-hidden="true"></i>
-                    {{- with .Site.Params.footer.since -}}
-                        <span itemprop="copyrightYear">
-                            {{- if lt . now.Year }}{{ . }} - {{ end }}{{ now.Year -}}
-                        </span>
-                    {{- else -}}
-                        <span itemprop="copyrightYear">{{ now.Year }}</span>
-                    {{- end -}}
+                    <span itemprop="copyrightYear">
+                        2026
+                    </span>
                 {{- end -}}
 
                 {{- /* Author */ -}}
