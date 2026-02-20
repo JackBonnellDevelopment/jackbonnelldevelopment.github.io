@@ -161,7 +161,7 @@ img {
   }
 }
 
-// Responsive images in content areas
+// Responsive images in content areas (centered)
 .content img,
 .single img,
 .summary img,
@@ -169,6 +169,20 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Center lightgallery link wrappers (enlargeable images)
+.content a.lightgallery {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Center image wrapper divs (e.g. .dpu-img)
+.content .dpu-img {
+  text-align: center;
 }
 
 // Ensure images in blog posts are responsive

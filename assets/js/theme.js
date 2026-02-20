@@ -395,8 +395,13 @@ class Theme {
   }
 
   initLightGallery() {
-    if (this.config.lightgallery) lightGallery(document.getElementById('content'), {
-      plugins: [lgThumbnail, lgZoom],
+    const container = document.getElementById('content');
+    if (!this.config.lightgallery || !container || typeof lightGallery !== 'function') return;
+    const plugins = [];
+    if (typeof lgThumbnail !== 'undefined') plugins.push(lgThumbnail);
+    if (typeof lgZoom !== 'undefined') plugins.push(lgZoom);
+    lightGallery(container, {
+      plugins,
       selector: '.lightgallery',
       speed: 400,
       hideBarsDelay: 2000,
