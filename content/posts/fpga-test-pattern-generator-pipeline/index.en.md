@@ -373,9 +373,7 @@ project-spec/meta-user/recipes-apps/usb-gadget-ethernet/
 
 Copy the script from:
 
-```
-static/fpga-test-pattern-generator-pipeline/usb_gadget_ethernet.sh
-```
+[Download usb_gadget_ethernet.sh](/fpga-test-pattern-generator-pipeline/usb_gadget_ethernet.sh)
 
 into the app files directory:
 
