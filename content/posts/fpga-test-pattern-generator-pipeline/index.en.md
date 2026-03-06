@@ -90,7 +90,7 @@ petalinux-config --get-hw-description=../ultra96v2_tpg.xsa
 Next, configure the serial port settings to use UART1 and ensure that all relevant serial console options are set correctly for the Ultra96V2. In the PetaLinux configuration menu (`petalinux-config`), set the following:
 
 <div class="config-img">
-  {{< image src="/fpga-test-pattern-generator-pipeline/petalinux_uart1.png" alt="PetaLinux UART1 Serial Config" title="Set All UART1 Serial Console Options in PetaLinux" >}}
+  {{< image src="/fpga-test-pattern-generator-pipeline/serial_setting.png" alt="PetaLinux UART1 Serial Config" title="Set All UART1 Serial Console Options in PetaLinux" >}}
 </div>
 
 - **Subsystem AUTO Hardware Settings → Serial Settings**
