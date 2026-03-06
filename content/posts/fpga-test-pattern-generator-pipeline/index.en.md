@@ -448,9 +448,7 @@ project-spec/meta-user/recipes-apps/tpg-viewer/
 ```
 with the provided Bitbake recipe at:
 
-```
-static/fpga-test-pattern-generator-pipeline/tpg-viewer.bb
-```
+[Download tpg-viewer.bb](static/fpga-test-pattern-generator-pipeline/tpg-viewer.bb)
 
 This ensures the OpenCV `tpg_viewer` utility is built with the correct dependencies and install paths.
 
