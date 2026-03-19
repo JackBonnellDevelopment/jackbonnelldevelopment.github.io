@@ -403,16 +403,16 @@
     # notification message (HTML format is supported)
     message = "🎉 New blog post available: "
     # optional link URL
-    link = "/posts/fpga-test-pattern-generator-pipeline/"
+    link = "/posts/fpga-dpu-part-2/"
     # optional link text (if not provided, the link URL will be shown)
-    linkText = "FPGA: Test Pattern Generator pipeline using Vivado 2025.2"
+    linkText = "FPGAs: Working with DPU Part 2"
     # link target ["_blank", "_self", "_parent", "_top"]
     linkTarget = "_self"
     # whether the banner can be dismissed by users
     dismissible = true
     # optional ISO-8601 datetime after which the banner should start showing (UTC recommended)
     # e.g. "2026-02-12T17:30:00Z" will only show the banner after that instant
-    showAfter = "2026-03-06T17:30:00Z"
+    showAfter = "2026-03-19T17:30:00Z"
 
   # CDN config for third-party library files
   [params.cdn]

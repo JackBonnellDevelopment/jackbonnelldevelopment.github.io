@@ -52,7 +52,7 @@ I am currently running this project on the 2025.2 Xilinx toolchain. I've been lo
 ## Block Design Notes
  
 I found that the documentation for the TPG made it sound like it was a much more plug-and-play block than it really was. For example, there is an AXI GPIO block due to a requirement in the driver for one which I could not find any documentation on, which was frustrating. The VDMA, on the other hand, was reasonably easy to implement.
-
+P
 ## Exporting Hardware XSA
  
 After running synthesis, implementation, and generating the bitstream, I created the hardware XSA, which I use to tell PetaLinux how to do the initial configuration. Make sure to include the bitstream!
