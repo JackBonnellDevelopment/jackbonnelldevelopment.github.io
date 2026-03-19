@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 2
 title: "FPGA: Test Pattern Generator pipeline using Vivado 2025.2"
 date: 2026-03-06T17:30:00+00:00
 lastmod: 2026-03-06T17:30:00+00:00

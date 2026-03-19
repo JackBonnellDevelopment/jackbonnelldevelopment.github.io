@@ -1,5 +1,5 @@
 ---
-weight: 1
+weight: 3
 title: "FPGAs : Working with DPU Part 1"
 date: 2026-02-20T17:30:00+00:00
 lastmod: 2026-02-20T17:30:00+00:00
