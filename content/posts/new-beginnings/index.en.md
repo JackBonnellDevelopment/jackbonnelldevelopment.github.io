@@ -1,5 +1,5 @@
 ---
-weight: 2
+weight: 4
 title: "New Beginnings"
 date: 2026-02-12T17:30:00+00:00
 lastmod: 2026-02-12T17:30:00+00:00
