@@ -149,9 +149,31 @@ petalinux-build -c device-tree
 
 ## Kernel and rootfs
 
-For the kernel (`petalinux-config -c kernel`) I enabled CMA, USB host / DWC3, UVC (`uvcvideo`), and the Xilinx DRM / DisplayPort bits so GStreamer can use `kmssink`. DMA support can stay on; with the VDMA nodes disabled in DT it will not claim the PL blocks.
+Open the kernel menuconfig and enable the pieces below (prefer built-in `*` for first bring-up). Use `/` to search if a path has moved slightly:
 
-On the rootfs side (`petalinux-config -c rootfs`) I pulled in GStreamer, `v4l-utils`, `usbutils`, `libdrm` / `libdrm-tests`, and `libjpeg-turbo` for MJPEG decode.
+```bash
+petalinux-config -c kernel
+```
+
+- **Memory Management options → Contiguous Memory Allocator** (`CONFIG_CMA`)
+  - Pool size can come from the cmdline; this project’s `system-user.dtsi` already sets `cma=512M` in `bootargs`
+- **Device Drivers → USB support**
+  - Enable USB support, xHCI / USB3 as offered
+  - Enable **DesignWare USB3 (DWC3)** host / DRD as offered by the BSP
+- **Device Drivers → Multimedia support → Media USB Adapters → USB Video Class (UVC)**
+  - Also enable the V4L2 options you need so the webcam shows up as `/dev/video0`
+- **Device Drivers → Graphics support → Direct Rendering Manager (DRM)**
+  - Enable **Xilinx DRM** / DisplayPort TX (`DRM_XLNX`, `DRM_XLNX_DPTX`, and bridges as listed) so GStreamer can use `kmssink`
+- **Device Drivers → DMA Engine support → Xilinx DMA** (optional)
+  - Fine to leave enabled; with the VDMA nodes disabled in DT it will not claim the PL blocks
+
+Save and exit, then:
+
+```bash
+petalinux-build -c kernel
+```
+
+On the rootfs side (`petalinux-config -c rootfs`) I pulled in GStreamer, `v4l-utils`, `usbutils`, `libdrm` / `libdrm-tests`, and `libjpeg-turbo` for MJPEG decode. Use `/` to search package names if needed.
 
 ## Userspace app
 
