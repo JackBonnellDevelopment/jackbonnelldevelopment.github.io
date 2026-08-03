@@ -1,6 +1,6 @@
 ---
 weight: 1
-title: "FPGA: Creating Custom IP with Vitis HLS 2025.2"
+title: "FPGA: Create a Custom IP with Vitis HLS 2025.2"
 date: 2026-08-03T17:30:00+00:00
 lastmod: 2026-08-03T17:30:00+00:00
 draft: false
