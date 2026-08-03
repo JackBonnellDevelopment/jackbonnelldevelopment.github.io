@@ -63,7 +63,7 @@ In the GUI:
 4. Part: **`xczu3eg-sbva484-1-i`**
 5. Clock: **10 ns** (100 MHz), matching a typical `pl_clk0`
 6. **Run C Simulation** — expect something like `PASS: grayscale OK`
-7. **Run C Synthesis**, then **Export RTL** as **IP Catalog** (`xilinx.com:hls:my_filter:1.0`)
+7. **Run C Synthesis**, then **Run Package** to export the IP (`xilinx.com:hls:my_filter:1.0`)
 
 I dropped the exported IP under something like `ip_repo/` so Vivado can pick it up from the repository settings.
 
