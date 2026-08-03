@@ -405,7 +405,7 @@
     # optional link URL
     link = "/posts/vitis-hls-custom-ip/"
     # optional link text (if not provided, the link URL will be shown)
-    linkText = "FPGA: Creating Custom IP with Vitis HLS 2025.2"
+    linkText = "FPGA: Create a Custom IP with Vitis HLS 2025.2"
     # link target ["_blank", "_self", "_parent", "_top"]
     linkTarget = "_self"
     # whether the banner can be dismissed by users
