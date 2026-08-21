@@ -799,6 +799,17 @@ class Theme {
         ad_user_data: 'denied',
         ad_personalization: 'denied'
       });
+    }; // Consent Mode loads GA before Accept, so the first page_view is cookieless.
+    // After Accept, send a real page_view so the visit appears in GA reports.
+
+
+    const trackPageviewAfterConsent = () => {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname + window.location.search
+      });
     };
 
     const options = Object.assign({}, this.config.cookieconsent, {
@@ -807,7 +818,9 @@ class Theme {
         applyAnalyticsConsent(this.hasConsented());
       },
       onStatusChange: function () {
-        applyAnalyticsConsent(this.hasConsented());
+        const granted = this.hasConsented();
+        applyAnalyticsConsent(granted);
+        if (granted) trackPageviewAfterConsent();
       },
       onRevokeChoice: function () {
         applyAnalyticsConsent(false);
