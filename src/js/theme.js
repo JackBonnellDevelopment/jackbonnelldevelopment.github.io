@@ -678,8 +678,7 @@ class Theme {
             });
         };
 
-        // Consent Mode loads GA before Accept, so the first page_view is cookieless.
-        // After Accept, send a real page_view so the visit appears in GA reports.
+        // page_view is withheld until Accept (see analytics.html send_page_view: false).
         const trackPageviewAfterConsent = () => {
             if (typeof gtag !== 'function') return;
             gtag('event', 'page_view', {
