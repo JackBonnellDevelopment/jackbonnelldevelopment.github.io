@@ -393,7 +393,7 @@
     type = "opt-in"
     # text strings used for Cookie consent banner
     [params.cookieconsent.content]
-      message = "This website uses cookies for analytics to understand how the site is used. Choose Accept to allow Google Analytics, or Reject to continue without analytics cookies."
+      message = "I use cookies for analytics. Accept to enable Google Analytics, or Reject to browse without analytics cookies."
       dismiss = "Got it!"
       allow = "Accept"
       deny = "Reject"
