@@ -1,21 +1,31 @@
 {{- $analytics := .Scratch.Get "analytics" | default dict -}}
 
 {{- if $analytics.enable -}}
-    {{- /* Google Analytics (Consent Mode — storage denied until Accept) */ -}}
+    {{- /* Google Analytics (Consent Mode — page_view only after Accept) */ -}}
     {{- with $analytics.google.id -}}
-        {{- /* Load gtag.js first so queued consent/config commands flush reliably */ -}}
         {{- printf "https://www.googletagmanager.com/gtag/js?id=%v" . | dict "Async" true "Source" | partial "plugin/script.html" -}}
         <script type="text/javascript">
             window.GA_MEASUREMENT_ID = '{{ . }}';
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            // Do not auto-send page_view while storage may be denied; send only after consent.
             gtag('config', '{{ . }}', {
                 {{- if $analytics.google.anonymizeIP -}}
                 'anonymize_ip': true,
                 {{- end -}}
-                'send_page_view': true
+                'send_page_view': false
             });
+            (function () {
+                var match = document.cookie.match(/(?:^|; )cookieconsent_status=([^;]*)/);
+                if (match && decodeURIComponent(match[1]) === 'allow') {
+                    gtag('event', 'page_view', {
+                        page_title: document.title,
+                        page_location: window.location.href,
+                        page_path: window.location.pathname + window.location.search
+                    });
+                }
+            })();
         </script>
     {{- end -}}
 
