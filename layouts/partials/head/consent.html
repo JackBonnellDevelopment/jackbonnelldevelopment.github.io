@@ -1,0 +1,21 @@
+{{- /* Google Consent Mode defaults — must run before any gtag/analytics tags */ -}}
+{{- $analytics := .Site.Params.analytics | default dict -}}
+{{- if and $analytics.enable $analytics.google.id -}}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  (function () {
+    var match = document.cookie.match(/(?:^|; )cookieconsent_status=([^;]*)/);
+    if (match && decodeURIComponent(match[1]) === 'allow') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  })();
+</script>
+{{- end -}}
