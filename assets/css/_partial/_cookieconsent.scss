@@ -1,27 +1,121 @@
 .cc-window.cc-banner {
-  .cc-btn {
-    color: $global-font-color;
+  font-family: $global-font-family !important;
+  font-size: 0.9rem !important;
+  line-height: 1.45 !important;
+  padding: 0.85rem 1rem !important;
+  background-color: $header-background-color !important;
+  color: $global-font-color !important;
+  border-top: 1px solid $global-border-color !important;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12) !important;
 
-    &:hover, &:focus {
-      background-color: #ccc;
-    }
+  [theme=dark] & {
+    background-color: $header-background-color-dark !important;
+    color: $global-font-color-dark !important;
+    border-top-color: $global-border-color-dark !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  .cc-message {
+    margin: 0 0 0.75rem !important;
+    padding: 0 !important;
+    display: block !important;
+    max-width: 48rem;
+    color: inherit !important;
+  }
+
+  .cc-link {
+    color: $single-link-color !important;
+    opacity: 1 !important;
+    padding: 0 !important;
 
     [theme=dark] & {
-      color: $global-font-color;
+      color: $single-link-color-dark !important;
+    }
 
-      &:hover, &:focus {
-        background-color: #fff;
+    &:hover, &:focus {
+      color: $global-link-hover-color !important;
+      text-decoration: underline !important;
+
+      [theme=dark] & {
+        color: $global-link-hover-color-dark !important;
       }
     }
   }
 
-  .cc-btn.cc-deny {
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    color: #fff;
+  .cc-compliance {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: stretch;
+    float: none !important;
+    max-width: none !important;
+  }
+
+  .cc-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 6.5rem;
+    margin: 0 !important;
+    padding: 0.55rem 1rem !important;
+    border-radius: 0.4rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .cc-btn.cc-allow {
+    background-color: $single-link-color !important;
+    border: 1px solid $single-link-color !important;
+    color: #fff !important;
+
+    [theme=dark] & {
+      background-color: $single-link-color-dark !important;
+      border-color: $single-link-color-dark !important;
+      color: #161209 !important;
+    }
 
     &:hover, &:focus {
-      background-color: rgba(255, 255, 255, 0.15);
+      opacity: 0.9;
     }
+  }
+
+  .cc-btn.cc-deny {
+    background-color: transparent !important;
+    border: 1px solid $global-border-color !important;
+    color: $global-font-color !important;
+
+    [theme=dark] & {
+      border-color: $global-border-color-dark !important;
+      color: $global-font-color-dark !important;
+    }
+
+    &:hover, &:focus {
+      background-color: rgba(0, 0, 0, 0.04) !important;
+      border-color: $global-font-secondary-color !important;
+
+      [theme=dark] & {
+        background-color: rgba(255, 255, 255, 0.06) !important;
+        border-color: $global-font-color-dark !important;
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+.cc-revoke.cc-bottom {
+  background-color: $header-background-color !important;
+  color: $global-font-color !important;
+  border: 1px solid $global-border-color !important;
+  border-bottom: none !important;
+  font-family: $global-font-family !important;
+  font-size: 0.8rem !important;
+
+  [theme=dark] & {
+    background-color: $header-background-color-dark !important;
+    color: $global-font-color-dark !important;
+    border-color: $global-border-color-dark !important;
   }
 }

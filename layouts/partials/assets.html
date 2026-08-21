@@ -168,7 +168,7 @@
     {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
     {{- $source := $cdn.cookieconsentJS | default "lib/cookieconsent/cookieconsent.min.js" -}}
     {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
-    {{- $cookieconsentConfig := dict "popup" (dict "background" "#1aa3ff") "button" (dict "background" "#f0f0f0") | dict "theme" "edgeless" "type" "opt-in" "palette" -}}
+    {{- $cookieconsentConfig := dict "popup" (dict "background" "#252627" "text" "#a9a9b3" "link" "#55bde2") "button" (dict "background" "#55bde2" "text" "#161209" "border" "#55bde2") | dict "theme" "edgeless" "type" "opt-in" "palette" -}}
     {{- $cookieconsentConfig = .Site.Params.cookieconsent | merge $cookieconsentConfig -}}
     {{- $cookieconsentConfig = dict "message" ($cookieconsentConfig.content.message | default (T "cookieconsentMessage")) "dismiss" ($cookieconsentConfig.content.dismiss | default (T "cookieconsentDismiss")) "allow" ($cookieconsentConfig.content.allow | default "Accept") "deny" ($cookieconsentConfig.content.deny | default "Reject") "link" ($cookieconsentConfig.content.link | default (T "cookieconsentLink")) "href" ($cookieconsentConfig.content.href | default "/privacy/") | dict "content" | merge $cookieconsentConfig -}}
     {{- $config = $cookieconsentConfig | dict "cookieconsent" | merge $config -}}
