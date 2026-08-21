@@ -666,7 +666,32 @@ class Theme {
     }
 
     initCookieconsent() {
-        if (this.config.cookieconsent) cookieconsent.initialise(this.config.cookieconsent);
+        if (!this.config.cookieconsent) return;
+
+        const applyAnalyticsConsent = (granted) => {
+            if (typeof gtag !== 'function') return;
+            gtag('consent', 'update', {
+                analytics_storage: granted ? 'granted' : 'denied',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+            });
+        };
+
+        const options = Object.assign({}, this.config.cookieconsent, {
+            type: this.config.cookieconsent.type || 'opt-in',
+            onInitialise: function () {
+                applyAnalyticsConsent(this.hasConsented());
+            },
+            onStatusChange: function () {
+                applyAnalyticsConsent(this.hasConsented());
+            },
+            onRevokeChoice: function () {
+                applyAnalyticsConsent(false);
+            },
+        });
+
+        cookieconsent.initialise(options);
     }
 
     initNotificationBanner() {
