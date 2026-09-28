@@ -16,10 +16,83 @@ jobs:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.128.0'
-          extended: true
+        env:
+          HUGO_VERSION: "0.128.0"
+        run: |
+          set -euo pipefail
+          case "$(uname -m)" in
+            x86_64) arch=amd64 ;;
+            aarch64|arm64) arch=arm64 ;;
+            *) echo "Unsupported architecture: $(uname -m)" >&2; exit 1 ;;
+          esac
+
+          use_hugo() {
+            local bin="$1"
+            echo "Using ${bin}"
+            "${bin}" version
+            echo "$(dirname "${bin}")" >> "${GITHUB_PATH}"
+          }
+
+          is_expected_hugo() {
+            local bin="$1"
+            [[ -n "${bin}" && -x "${bin}" ]] || return 1
+            "${bin}" version | grep -q "v${HUGO_VERSION}.*extended"
+          }
+
+          candidates=()
+          if [[ -n "${RUNNER_TOOL_CACHE:-}" ]]; then
+            candidates+=("${RUNNER_TOOL_CACHE}/hugo/${HUGO_VERSION}/${arch}/hugo")
+          fi
+          candidates+=(
+            "${HOME}/.cache/hugo-tool-cache/hugo/${HUGO_VERSION}/${arch}/hugo"
+            "${HOME}/actions_hugo/bin/hugo"
+          )
+          if command -v hugo >/dev/null 2>&1; then
+            candidates+=("$(command -v hugo)")
+          fi
+          for bin in "${candidates[@]}"; do
+            if is_expected_hugo "${bin}"; then
+              use_hugo "${bin}"
+              exit 0
+            fi
+          done
+
+          install_dir="${RUNNER_TOOL_CACHE:-${HOME}/.cache/hugo-tool-cache}/hugo/${HUGO_VERSION}/${arch}"
+          mkdir -p "${install_dir}"
+          tmp="$(mktemp)"
+          urls=(
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-${arch}.tar.gz"
+          )
+          if [[ "${arch}" == "amd64" ]]; then
+            urls+=(
+              "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
+            )
+          fi
+
+          download() {
+            echo "Downloading $1 ($*)"
+            curl -fL --retry 3 --retry-delay 3 --connect-timeout 20 --max-time 180 "${@:2}" -o "${tmp}" "$1"
+          }
+
+          downloaded=0
+          for url in "${urls[@]}"; do
+            if download "${url}" -4 --http1.1 \
+              || download "${url}" -4 \
+              || download "${url}" --http1.1 \
+              || download "${url}" --noproxy '*'; then
+              downloaded=1
+              break
+            fi
+          done
+          if [[ "${downloaded}" -ne 1 ]]; then
+            echo "Failed to download Hugo ${HUGO_VERSION}" >&2
+            exit 1
+          fi
+
+          tar -xzf "${tmp}" -C "${install_dir}" hugo
+          rm -f "${tmp}"
+          chmod +x "${install_dir}/hugo"
+          use_hugo "${install_dir}/hugo"
 
       - name: Build
         run: hugo --minify
