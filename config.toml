@@ -407,16 +407,16 @@
     # notification message (HTML format is supported)
     message = "🎉 New blog post available: "
     # optional link URL
-    link = "/posts/te0950-vpss-udp/"
+    link = "/posts/te0950-hls-depth/"
     # optional link text (if not provided, the link URL will be shown)
-    linkText = "Dual IMX219 MIPI Pipeline 1080p at 48 FPS on the TE0950 | Vitis 2024.2"
+    linkText = "FPGA: Stereo depth with a Vitis HLS block on the TE0950"
     # link target ["_blank", "_self", "_parent", "_top"]
     linkTarget = "_self"
     # whether the banner can be dismissed by users
     dismissible = true
     # optional ISO-8601 datetime after which the banner should start showing (UTC recommended)
     # e.g. "2026-02-12T17:30:00Z" will only show the banner after that instant
-    showAfter = "2026-09-28T08:00:00Z"
+    showAfter = "2026-10-09T08:00:00Z"
 
   # CDN config for third-party library files
   [params.cdn]
